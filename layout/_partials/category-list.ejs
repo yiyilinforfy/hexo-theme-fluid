@@ -4,15 +4,19 @@
     <% var collapsed = subCats.length === 0 || depth >= theme.category.collapse_depth %>
     <% if ((params.filterIds || []).includes(cat._id)) collapsed = false %>
     <div class="<%= depth <= 0 ? 'category' : 'category-sub' %> row nomargin-x">
-      <a class="<%= depth <= 0 ? 'category-item' : 'category-subitem' %> <%= collapsed ? 'collapsed' : '' %>
+
+      <div class="<%= depth <= 0 ? 'category-item' : 'category-subitem' %> <%= collapsed ? 'collapsed' : '' %>
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="<%= cat.name.trim() %>"
-        id="heading-<%= md5(cat.name) %>" role="tab" data-toggle="collapse" href="#collapse-<%= md5(cat.name) %>"
+        id="heading-<%= md5(cat.name) %>"
         aria-expanded="<%= collapsed ? 'false' : 'true' %>"
       >
-        <%= cat.name.trim() %>
+      <a href="<%= url_for(cat.path) %>">
+         <%= cat.name.trim() %>
         <span class="list-group-count"><%= params.type === 'post' ? `(${ cat.posts.length })` : '' %></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
+       
+      </div>
       <% if(params.type !== 'post') { %>
         <a href="<%= url_for(cat.path) %>" class="category-count col-2 col-md-1 col-xm-1">
           <i class="iconfont icon-articles"></i>
@@ -37,7 +41,7 @@
 <% } %>
 
 <% function render_posts(posts, cat, params) { %>
-  <div class="category-post-list">
+  <!-- <div class="category-post-list">
     <% var limit = params.postLimit %>
     <% for (var idx = 0; idx < posts.length; idx++) { %>
       <% var post = posts.data[idx] %>
@@ -54,7 +58,7 @@
         </a>
       <% } %>
     <% } %>
-  </div>
+  </div> -->
 <% } %>
 
 <div class="category-list">

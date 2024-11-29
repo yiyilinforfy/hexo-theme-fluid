@@ -9,7 +9,21 @@ page.banner_mask_alpha = theme.index.banner_mask_alpha
 
 <% page.posts.each(function (post) { %>
   <div class="row mx-auto index-card">
-    <% var post_url = url_for(post.path), index_img = post.index_img || theme.post.default_index_img %>
+    <%
+  var post_url = url_for(post.path);
+  var index_img;
+
+  if (post.index_img) {
+    index_img = post.index_img;
+  } else if (post.categories && post.categories.some(category => category.name === 'bitcoin')) {
+    index_img = theme.post.default_bitcoin_img;
+  } else if (post.categories && post.categories.some(category => category.name === 'space')) {
+    index_img = theme.post.default_space_img;
+  } else {
+    index_img = theme.post.default_index_img;
+  }
+%>
+
     <% if (index_img) { %>
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="<%= post_url %>" target="<%- theme.index.post_url_target %>">
@@ -30,7 +44,7 @@ page.banner_mask_alpha = theme.index.banner_mask_alpha
       <% var excerpt = post.description || post.excerpt || (theme.index.auto_excerpt.enable && !post.encrypt && post.content) %>
       <a class="index-excerpt <%= index_img ? '' : 'index-excerpt__noimg' %>" href="<%= post_url %>" target="<%- theme.index.post_url_target %>">
         <div>
-          <%- strip_html(excerpt).substring(0, 200).trim().replace(/\n/g, ' ') %>
+          <%- strip_html(excerpt).trim().replace(/\n/g, ' ').match(/\b\w+\b/g).slice(0, 50).join(' ') %>
         </div>
       </a>
 

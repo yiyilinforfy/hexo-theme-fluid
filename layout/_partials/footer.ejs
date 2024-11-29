@@ -1,14 +1,18 @@
-<div class="footer-inner">
-  <% if (theme.footer.content) { %>
-    <div class="footer-content">
-      <%- theme.footer.content %>
-    </div>
-  <% } %>
-  <% if (theme.footer.statistics.enable) { %>
-    <%- partial('_partials/footer/statistics.ejs') %>
-  <% } %>
-  <% if(theme.footer.beian.enable) { %>
-    <!-- 备案信息 ICP for China -->
-    <%- partial('_partials/footer/beian.ejs') %>
-  <% } %>
-</div>
+<footer class="footer-inner">
+  <div class="footer-left">
+    Copyright  <i class="iconfont icon-copyright"></i>
+    <% var endYear = (theme.copyright && theme.copyright.end_year) ? theme.copyright.end_year : new Date().getFullYear() %>
+    <% var startYear = (theme.copyright && theme.copyright.start_year) ? theme.copyright.start_year : new Date().getFullYear() %>
+    <%= startYear >= endYear ? endYear : startYear + "-" + endYear %>
+    <%= config.author || config.title %>
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <% for (var i in theme.nav) { %><!--
+       --><li><a href="<%- url_for(theme.nav[i]) %>"><%= __('nav.'+i).replace("nav.", "") %></a></li><!--
+     --><% } %>
+      </ul>
+    </nav>
+  </div>
+</footer>

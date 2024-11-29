@@ -28,6 +28,7 @@
       success : function(xmlResponse) {
         // 0x02. parse xml file
         var dataList = jQuery('entry', xmlResponse).map(function() {
+          console.log(xmlResponse, 'xmlResponse')
           return {
             title  : jQuery('title', this).text(),
             content: jQuery('content', this).text(),
@@ -104,12 +105,16 @@
                 }
 
                 var match_content = content.substring(start, end);
+                // console.log(match_content, 'match')
 
                 // highlight all keywords
-                keywords.forEach(function(keyword) {
-                  var regS = new RegExp(keyword, 'gi');
-                  match_content = match_content.replace(regS, '<span class="search-word">' + keyword + '</span>');
-                });
+                // keywords.forEach(function(keyword) {
+                //   var regS = new RegExp(keyword, 'gi');
+                //   console.log(keyword, 'keyword')
+                //   match_content = match_content.replace(regS, '<span class="search-word">' + keyword + '</span>');
+                // });
+
+                // console.log(match_content, 'match')
 
                 resultHTML += '<p class=\'search-list-content\'>' + match_content + '...</p>';
               }
