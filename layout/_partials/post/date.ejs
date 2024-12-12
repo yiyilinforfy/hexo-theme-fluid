@@ -1,5 +1,5 @@
 <% if (post.date) { %>
-    <div class="<%= class_name %>">
+    <!-- <div class="<%= class_name %>">
       <i class="iconfont icon-date"></i>
       <% if (is_post()) { %>
         <time datetime="<%= date_xml(post.date) %>" class="dt-published" itemprop="datePublished"><%= date(post.date, config.date_format) %></time>
@@ -13,5 +13,8 @@
           <time datetime="<%= date_xml(post.date) %>" class="dt-published" itemprop="datePublished"><%= date(post.date, config.date_format) %></time>
         <% } %>
       <% } %>
-    </div>
+    </div> -->
+    <time>
+      <%= new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) %>
+    </time>    
 <% } %>

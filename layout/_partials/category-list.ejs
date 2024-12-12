@@ -11,7 +11,7 @@
         aria-expanded="<%= collapsed ? 'false' : 'true' %>"
       >
       <a href="<%= url_for(cat.path) %>">
-         <%= cat.name.trim() %>
+         <%= cat.name.trim().replace(/^\w/, (c) => c.toUpperCase()) %>
         <span class="list-group-count"><%= params.type === 'post' ? `(${ cat.posts.length })` : '' %></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
