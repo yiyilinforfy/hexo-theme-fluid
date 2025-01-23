@@ -89,7 +89,7 @@ Fluid.plugins = {
       if ($figcaption.length !== 0) {
         $figcaption.addClass('image-caption');
       } else {
-        var imageTitle = $target.attr('title') || $target.attr('alt');
+        var imageTitle = $target.attr('title'); // || $target.attr('alt');
         if (imageTitle) {
           $target.after(`<figcaption aria-hidden="true" class="image-caption">${imageTitle}</figcaption>`);
         }
