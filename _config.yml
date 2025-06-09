@@ -385,8 +385,17 @@ navbar:
     - { key: "home", link: "/", icon: "" }
     # - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "category", link: "/categories/", icon: "" }
+    - { key: "BTC", link: "/predict/", icon: "" }
     # - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "about", link: "/about/", icon: "" }
+    - { 
+        key: "Forum",
+        icon: "",
+        submenu: [
+          { key: "BTC Forum", link: "http://52.62.6.69/", icon: "icon1", target: '_blank' },
+          { key: "Space Forum", link: "http://13.239.237.164/", icon: "icon2", target: '_blank' }
+        ]
+      }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件

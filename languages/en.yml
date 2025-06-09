@@ -4,6 +4,15 @@ home:
   menu: 'Home'
   title: 'Home'
 
+articles:
+  menu: 'BTC'
+  title: 'BTC'
+
+forum: 
+  menu: 'Forum'
+  title: 'Forum'
+  subtitle: 'BTC Forum'
+
 archive:
   menu: 'Archives'
   title: 'Archives'
