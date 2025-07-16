@@ -187,6 +187,7 @@ page.title = theme.category.title || __('category.title')
     forecastLoading.style.display = 'flex';
     refreshBtn.style.display = 'none';
     assetInput.value = '';
+    adviceResult.innerHTML = '';
     
     fetch(apiHost + '/predict')
       .then(res => {
